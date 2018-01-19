@@ -14,10 +14,21 @@ const server = http.createServer(app);
 
 var io = socketIO(server);
 
-io.on('connection',(socket)=>{
-   console.log('new user connected');
+io.on('connection', (socket) => {
+    console.log('New user connected');
+
+    socket.emit('newMessage', {
+        from: 'John',
+        text: 'See you then',
+        createdAt: 123123
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log('createMessage', message);
+    });
+
     socket.on('disconnect', () => {
-        console.log('Client disconnected from server' );
+        console.log('User was disconnected');
     });
 });
 
