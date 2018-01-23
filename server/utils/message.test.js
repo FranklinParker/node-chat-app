@@ -13,7 +13,6 @@ describe('generateMessage', () => {
   });
 });
 
-
 describe('generateLocationMessage', () => {
   it('should generate correct location object', () => {
     var from = 'Deb';
